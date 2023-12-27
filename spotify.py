@@ -76,8 +76,9 @@ def display(menu, amount, time, duration):
         top_artists = sp.current_user_top_artists(limit=limit, time_range=time)
         for artist in top_artists['items']:
             with columns[counter % 2]:
-                st.subheader(f"{counter + 1}. {artist['name']}")
-                st.image(artist['images'][0]['url'], width = 250)
+                st.subheader(f"{counter + 1}. [{artist['name']}]({artist['external_urls']['spotify']})")
+                st.markdown(f'<a href="{artist["external_urls"]["spotify"]}"><img src="{artist["images"][0]["url"]}" width="250"></a>', unsafe_allow_html=True)
+
             counter += 1
             #st.json(artist)
 
@@ -91,10 +92,11 @@ def display(menu, amount, time, duration):
         top_tracks = sp.current_user_top_tracks(limit=limit, time_range=time)
         for track in top_tracks['items']:
             with columns[counter % 2]:
-                st.write(f"**{counter + 1}. {track['name']} by {track['artists'][0]['name']}** ")
+                st.write(f"**{counter + 1}. [{track['name']} by {track['artists'][0]['name']}]({track['external_urls']['spotify']})** ")
                 album_id = track['album']['id']
                 album_details = sp.album(album_id)
-                st.image(album_details['images'][0]['url'], width=250)
+                st.markdown(f'<a href="{album_details["external_urls"]["spotify"]}"><img src="{album_details["images"][0]["url"]}" width="{250}"></a>', unsafe_allow_html=True)
+
             counter += 1
 
 #navigation bar
