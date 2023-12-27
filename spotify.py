@@ -39,7 +39,7 @@ def app_sign_in():
         st.write(e)
     else:
         st.session_state["signed_in"] = True
-        st.success("Sign in success!")
+        #st.success("Sign in success!")
         
     return sp
 
