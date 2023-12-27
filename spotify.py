@@ -102,6 +102,7 @@ st.sidebar.title("Menu")
 menu_choice = st.sidebar.radio("",["Artists", "Tracks"]) #NEW 3
 amount_choice = st.sidebar.radio("",["Top 10", "Top 20", "Top 50"])
 time_choice = st.sidebar.radio("", ["Last month", "6 months", "All time"])
+st.sidebar.image("spotify_logo.png", width = 200)
 
 url_params = st.experimental_get_query_params()
 # attempt sign in with cached token
